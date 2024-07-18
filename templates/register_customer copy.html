@@ -1,0 +1,38 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block a %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+{% if error %}
+<script>
+alert('Ragistration Sucessfull');
+window.location='{% url 'login_customer' %}';
+</script>
+{% endif %}
+
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Register your account</strong></h3><hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        First Name:<br><input type="text" required placeholder="Enter first name" name="fname" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Last Name:<br><input type="text" required placeholder="Enter last name" name="lname" style="border-radius:8px;width:600px;height:35px;"><br><br>
+User Name:<br><input type="text" required placeholder="Enter user name" name="uname" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Password:<br><input type="password" required placeholder="Enter password" name="pwd" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Gender:<br><div style="border-radius:8px;width:600px;height:35px;"> Male <input type="radio" value="Male" name="male"> Female <input type="radio" value="Female" name="male"><br><br></div>
+Email:<br><input type="email" placeholder="Enter email" name="email" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Mobile:<br><input type="text" required placeholder="Enter mobile number" name="mobile" style="border-radius:8px;width:600px;height:35px;"><br><br>
+Date of Birth:<br><input type="date" required placeholder="Enter your Date of Birth" name="birth" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Full Address:<br><input type="text" required placeholder="Enter Address" name="add" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        <input type="submit" value="Sign in" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% endblock %}

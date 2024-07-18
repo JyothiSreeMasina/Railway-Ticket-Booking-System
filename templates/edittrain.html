@@ -1,0 +1,50 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=time][type=file]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+{% if error %}
+<script>
+alert('Record Updated Successfully');
+window.location='{% url 'view_train' %}';
+</script>
+{% endif %}
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Edit Train Detail</strong></h3><hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        Train Name:<br><input type="text" placeholder="Enter Train Name" value="{{data.trainname}}" name="busname" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Train No:<br><input type="text" placeholder="Enter Train No." value="{{data.train_no}}" name="bus_no" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        From City:<br><input type="text" placeholder="Enter pick location" value="{{data.from_city}}" name="fcity" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        To City:<br><input type="text" placeholder="Enter Drop location" value="{{data.to_city}}" name="tcity" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Departure Time: <br><input value="{{data.departuretime}}" type="text" placeholder="Enter Departure time" name="dtime"  style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Arrival Time: <br><input value="{{data.arrivaltime}}" type="text" placeholder="Enter arrival time" name="atime" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Travel Time: <br><input value="{{data.trevaltime}}"  type="text" placeholder="Enter Travel time"  name="ttime" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Distance:<br><input type="number" placeholder="Enter Distance" value="{{data.distance}}" name="dis" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        Image:<br><img src ="{{data.img.url}}" style="border-radius:8px;width:200px;height:150px;">
+        &nbsp;<a href="{% url 'change_image' data.id %}">Change Image</a>
+        <br><br>
+
+
+
+        <input type="submit" value="Update" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=time][type=file]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Change Train Image</strong></h3><hr>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        Old Image:
+        <br><img src ="{{train.img.url}}"  style="border-radius:8px;width:200px;height:150px;">
+        &nbsp;
+        <br>
+New Image:
+        <br><input type="file" name="newpic" class="form-control" style="border-radius:8px;width:250px;height:50px;">
+        &nbsp;
+        <br>
+
+        <input type="submit" value="Update" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% ifequal error "no" %}
+<script>
+    alert('Train pic has been updated');
+    window.location=('{% url 'change_image' train.id %}');
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    window.location=('{% url 'change_image' train.id %}');
+</script>
+{% endifequal %}
+
+{% endblock %}

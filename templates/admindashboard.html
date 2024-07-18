@@ -1,0 +1,27 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+<center>
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+    <h3><strong>Dashboard</strong></h3><hr>
+
+    <h3><a href="{% url 'admindashboard' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Dashboard</button></a></h3>
+   <h3><a href="{% url 'add_train' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Add Train</button></a></h3>
+   <h3><a href="{% url 'add_route' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Add Route</button></a></h3>
+   <h3><a href="{% url 'availableroute' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">View Route</button></a></h3>
+    <h3><a href="{% url 'view_train' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Train Report</button></a></h3>
+     <h3><a href="{% url 'viewbookings' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">View Bookings</button></a></h3>
+    <h3><a href="{% url 'view_regusers' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">View Reg. Users</button></a></h3>
+    <h3><a href="{% url 'log_out' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Logout</button></a></h3>
+</div>
+    </center>
+{% endblock %}
+  <li id="id1"><a href="{% url 'availableroute' %}">View Route</a></li>

@@ -1,0 +1,41 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+
+{% if error %}
+alert('Route is added successfully')
+{%  endif %}
+
+<style>
+    input[type=text][type=time]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+{% if error %}
+<script>
+alert('Added New Route Sucessfully');
+window.location='{% url 'availableroute' %}';
+</script>
+{% endif %}
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Add New Route</strong></h3><hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        <select name="bus" style="border-radius:8px;width:600px;height:35px;">
+            {% for i in data %}
+            <option value="{{i.id}}">{{i.trainname}}.[{{i.train_no}}]</option>
+            {% endfor  %}
+        </select><br><br>
+        Route:<br><input type="text" required placeholder="Enter Route" name="route" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Distance:<br><input type="number" required placeholder="Enter Distance" name="dis" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Fare:<br><input type="number" required placeholder="Enter fare" name="fare" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        <input type="submit" value="Add Route" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% endblock %}

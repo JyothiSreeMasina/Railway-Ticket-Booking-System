@@ -1,0 +1,37 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=time][type=file]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+
+</style>
+{% if error %}
+<script>alert('Added New Train Successfully');
+window.location='{% url 'view_train' %}';
+</script>
+{% endif %}
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Add New Train</strong></h3><hr>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        Train Name:<br><input type="text" required placeholder="Enter Train Name" name="busname" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Train No:<br><input type="text" required placeholder="Enter Train No." name="bus_no" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        From(Source):<br><input type="text" required placeholder="Enter Source location" name="fcity" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        To(Destination):<br><input type="text" required placeholder="Enter Destination location" name="tcity" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Departure Time:<br><input type="text" required placeholder="Enter Departure time HH:MM am/pm" name="dtime" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Arrival Time:<br><input type="text" required placeholder="Enter arrival time HH:MM am/pm"  name="atime" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Travel Time:<br><input type="text" required placeholder="Enter Travel time HH:MM" name="ttime" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Distance:<br><input type="number" required placeholder="Enter Distance (in Km)" name="dis" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        <br><input type="file" name="img" required style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        <input type="submit" value="Add Train" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% endblock %}

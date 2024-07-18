@@ -1,0 +1,61 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+{% if error %}
+<script>
+alert('Delete Route Sucessfully');
+window.location='{% url 'availableroute' %}';
+</script>
+{% endif %}
+
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+<hr><h3><strong>All Added Route</strong></h3><hr>
+        <div class="container">
+<table class="table table-bordered" id="myTable">
+
+  <thead style="color:white;background-color:#333">
+  <tr>
+    <th>Sr No</th>
+    <th>Route</th>
+      <th>Train Name & No.</th>
+    <th>Fare</th>
+    <th>Distance</th>
+    <th>Action</th>
+  </tr>
+
+  </thead>
+   <tbody>
+
+{% for i in data %}
+  <tr>
+
+    <td>{{forloop.counter}}</td>
+    <td>{{i.route}}</td>
+      <td style="color:blue">{{i.train.trainname}}.[{{i.train.train_no}}]</td>
+    <td>{{i.fare}}</td>
+    <td>{{i.distance}}</td>
+    <td style="100px"><a href="{% url 'editroute' i.id %}" style="color:red"><u>Edit</u></a>
+        <a href="{% url 'delete_route' i.id %}" style="color:red"><u>Delete</u></a></td>
+
+
+  </tr>{% endfor %}
+
+    </tbody>
+
+</table>
+
+ </div>
+
+</div>
+
+
+{% endblock %}

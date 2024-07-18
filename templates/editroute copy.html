@@ -1,0 +1,47 @@
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+
+{% if error %}
+alert('Route is added successfully')
+{%  endif %}
+
+<style>
+    input[type=text][type=time]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+
+{% if error %}
+<script>alert('Update Route Sucessfully');
+window.location='{% url 'availableroute' %}';
+</script>
+{% endif %}
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+        <h3><strong>Edit Route</strong></h3><hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        <select name="bus" style="border-radius:8px;width:600px;height:35px;">
+            {% for i in data2 %}
+
+             {% if i.id == data.train.id %}
+            <option value="{{i.id}}" selected>{{i.trainname}}.[{{i.train_no}}]</option>
+        {% else %}
+            <option value="{{i.id}}">{{i.trainname}}.[{{i.train_no}}]</option>
+        {% endif %}
+            {% endfor  %}
+        </select><br><br>
+        Route:<br><input type="text" placeholder="Enter Route" name="route" value="{{data.route}}" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Distance:<br><input type="number" placeholder="Enter Distance" name="dis" value="{{data.distance}}" style="border-radius:8px;width:600px;height:35px;"><br><br>
+        Fare:<br><input type="number" placeholder="Enter fare" name="fare" value="{{data.fare}}" style="border-radius:8px;width:600px;height:35px;"><br><br>
+
+        <input type="submit" value="Update" style="color:white;border-radius:8px;width:100px;height:35px;background-color:#333;border:1px solid black">
+    </form>
+
+    </div>
+
+{% endblock %}

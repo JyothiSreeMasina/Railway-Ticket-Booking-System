@@ -1,0 +1,64 @@
+
+{% extends 'navigation3.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+
+
+
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+<hr><h3><strong>View Reg. Users</strong></h3><hr>
+
+    <div class="container">
+<table class="noteCard table table-bordered" id="myTable">
+  <thead style="color:white;background-color:#333">
+  <tr>
+    <th>Sr No</th>
+    <th>First Name</th>
+      <th>Last Name</th>
+      <th>UserName</th>
+    <th>Email_ID</th>
+    <th>Contact No.</th>
+       <th>Address</th>
+    <th>Birth_Date</th>
+    <th>Gender</th>
+
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+    {% for i in data %}
+
+  <tr>
+
+    <td>{{forloop.counter}}</td>
+    <td>{{i.user.first_name}}</td>
+    <td>{{i.user.last_name}}</td>
+    <td>{{i.user.username}}</td>
+      <td>{{i.user.email}}</td>
+      <td>{{i.mobile}}</td>
+      <td>{{i.add}}</td>
+      <td>{{i.dob}}</td>
+      <td>{{i.gender}}</td>
+
+
+    <td style="width:100px">
+   <a href="{% url 'delete_user' i.user.id %}" onclick="return confirm('Do you really want to Delete ?');" style="color:red"><u>Delete</u></a></td>
+
+  </tr>
+
+    {% endfor %}
+    </tbody>
+</table>`
+
+ </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'navigation2.html' %}
+{% load static %}
+{% block b %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:600px;
+    height:16px;
+    }
+</style>
+<center>
+<div style="color:Black;border:1px solid white;border-radius:8px;background-color:white;padding:50px">
+
+    <h3><strong>Dashboard</strong></h3><hr>
+
+    <h3><a href="{% url 'dashboard' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Dashboard</button></a></h3>
+   <h3><a href="{% url 'search_train' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Search Train</button></a></h3>
+    <h3><a href="{% url 'my_booking' %}"><button  style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">My Booking</button></a></h3>
+    <h3><a href="{% url 'log_out' %}"><button style="width:600px;color:white;border-radius:8px;height:45px;background-color:#333">Logout</button></a></h3>
+</div>
+    </center>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'head.html' %}
+{% load static %}
+{% block body %}
+<style>
+.id2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+   border-radius:10px;
+  border:1px solid #bbb;
+
+}
+
+.id1 {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+   border-radius:10px;
+}
+
+.active {
+  background-color: #4CAF50;
+  border-radius:10px;
+}
+</style>
+
+<ul class="id2">
+  <li class="id1"><a href="{% url 'nav' %}">Home</a></li>
+  <li class="id1"><a href="{% url 'about' %}">About Project</a></li>
+  <li class="id1"><a href="{% url 'login_customer' %}">Login</a></li>
+  <li class="id1"><a href="{% url 'register_customer' %}">Register</a></li>
+  <li class="id1"><a href="{% url 'contact' %}">Contact</a></li>
+</ul>
+  {% block a %}
+  {% endblock %}
+
+
+
+{% endblock %}
